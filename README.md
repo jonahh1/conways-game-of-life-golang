@@ -9,6 +9,6 @@ In both versions I have used the Raylib library to handle graphics because i lik
  - hold down the left mouse button to paint cells white *(or on)*
  - hold down the right mouse button to paint cells black *(or off)*
  - scroll the mouse wheel to make the game progress stage by stage
-
+ - press 'c' to clear the screen
 ## How to run
 i think this command should work but this is my first go project so I have no idk: `go run main.go`
