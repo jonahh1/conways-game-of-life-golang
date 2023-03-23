@@ -6,8 +6,8 @@ import (
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
-const width = 160
-const height = 80
+const width = 100
+const height = 60
 const size = 10
 
 type cell struct {
@@ -57,15 +57,7 @@ func updateState(state [width][height]cell, scroll float32) [width][height]cell 
 				if totalNeighbors == 3 {
 					newState[x][y].state = 1
 				}
-			} /* else if scroll < 0 {
-				if totalNeighbors < 2 || totalNeighbors > 3 {
-					newState[x][y] = true
-				}
-				if totalNeighbors == 3 {
-					newState[x][y] = false
-				}
-
-			}*/
+			}
 		}
 	}
 	return newState
@@ -78,7 +70,7 @@ func main() {
 			cells[x][y] = cell{state: 0, canManipulate: true}
 		}
 	}
-	rl.InitWindow(width*size-1, height*size-1, "raylib [core] example - basic window")
+	rl.InitWindow(width*size-1, height*size-1, "Conway's Game of Life")
 	rl.SetTargetFPS(60)
 
 	for !rl.WindowShouldClose() {
@@ -111,6 +103,13 @@ func main() {
 			for x := 0; x < width; x++ {
 				for y := 0; y < height; y++ {
 					cells[x][y].canManipulate = true
+				}
+			}
+		}
+		if rl.IsKeyPressed(rl.KeyC) {
+			for x := 0; x < width; x++ {
+				for y := 0; y < height; y++ {
+					cells[x][y].state = 0
 				}
 			}
 		}
